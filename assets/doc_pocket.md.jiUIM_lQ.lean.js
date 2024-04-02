@@ -1,0 +1,1 @@
+import{_ as t,c as e,o as p,a4 as a}from"./chunks/framework.4aTu-Nia.js";const k=JSON.parse('{"title":"","description":"","frontmatter":{},"headers":[],"relativePath":"doc/pocket.md","filePath":"doc/pocket.md"}'),d={name:"doc/pocket.md"},r=a("",6),o=[r];function l(h,c,m,i,n,s){return p(),e("div",null,o)}const b=t(d,[["render",l]]);export{k as __pageData,b as default};
