@@ -76,13 +76,8 @@ export default defineConfig({
         items: docs,
       },
     ],
-
-    editLink: {
-      pattern: 'https://github.com/maotianyuan/mty/edit/main/docs/:path',
-      text: '在 GitHub 上编辑此页面'
-    },
     socialLinks: [
-      { icon: 'github', link: 'https://github.com/maotianyuan/zero/packages/pocket' },
+      { icon: 'github', link: 'https://github.com/maotianyuan/zero/tree/main/packages/pocket' },
     ],
     search: {
       provider: 'local'
