@@ -63,7 +63,7 @@ const docs: DefaultTheme.SidebarItem[] = treeToItems(tree)
 export default defineConfig({
   title: 'Pocket',
   description: '前端工程师-常用方法 JS 工具库',
-  base: '/zero/',
+  base: '/ailer/',
   themeConfig: {
     nav: [
       { text: '主页', link: '/doc/index' },
