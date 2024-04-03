@@ -5,6 +5,9 @@
   "module": "dist/bundle.esm.js",
   "types": "types/index.d.ts",
   "private": false,
+  "publicConfig": {
+    "access": "public"
+  },
   "scripts": {
     "dev": "rollup -c -w",
     "build": "rollup -c",
@@ -50,5 +53,5 @@
     "vitepress": "^1.0.2",
     "vitest": "^1.4.0"
   },
-  "gitHead": "f345d7515867dfc5ebf20d9efa803306d3f17441"
+  "gitHead": "4cb4a8aa8ae30418f4df33913ae18fe76e2ef8ee"
 }
