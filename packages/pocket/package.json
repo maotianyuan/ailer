@@ -1,9 +1,10 @@
 {
   "name": "@ailer/pocket",
-  "version": "0.0.2",
+  "version": "0.0.1",
   "description": "Put the tools into your pocket",
   "module": "dist/bundle.esm.js",
   "types": "types/index.d.ts",
+  "private": false,
   "scripts": {
     "dev": "rollup -c -w",
     "build": "rollup -c",
@@ -48,5 +49,6 @@
     "typescript": "^5.4.3",
     "vitepress": "^1.0.2",
     "vitest": "^1.4.0"
-  }
+  },
+  "gitHead": "f345d7515867dfc5ebf20d9efa803306d3f17441"
 }
