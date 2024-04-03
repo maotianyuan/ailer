@@ -1,1 +1,0 @@
-import{_ as s,c as i,o as a,a4 as n}from"./chunks/framework.CFyxHDRz.js";const E=JSON.parse('{"title":"","description":"","frontmatter":{},"headers":[],"relativePath":"etc/pocket.api.md","filePath":"etc/pocket.api.md"}'),h={name:"etc/pocket.api.md"},k=n("",3),l=[k];function p(t,e,F,r,g,d){return a(),i("div",null,l)}const B=s(h,[["render",p]]);export{E as __pageData,B as default};
