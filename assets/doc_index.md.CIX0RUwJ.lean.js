@@ -1,1 +1,0 @@
-import{_ as e,c as a,o as t,a4 as r}from"./chunks/framework.CFyxHDRz.js";const m=JSON.parse('{"title":"","description":"","frontmatter":{},"headers":[],"relativePath":"doc/index.md","filePath":"doc/index.md"}'),o={name:"doc/index.md"},c=r("",4),d=[c];function n(s,i,_,p,h,l){return t(),a("div",null,d)}const k=e(o,[["render",n]]);export{m as __pageData,k as default};
