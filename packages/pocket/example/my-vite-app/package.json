@@ -9,10 +9,10 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "@ailer/pocket": "^0.0.7",
     "vue": "^3.4.21"
   },
   "devDependencies": {
+    "@ailer/pocket": "^0.0.8",
     "@vitejs/plugin-vue": "^5.0.4",
     "vite": "^5.2.0"
   }

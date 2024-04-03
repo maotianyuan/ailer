@@ -1,24 +1,24 @@
 lockfileVersion: 5.4
 
 specifiers:
-  '@ailer/pocket': ^0.0.7
+  '@ailer/pocket': ^0.0.8
   '@vitejs/plugin-vue': ^5.0.4
   vite: ^5.2.0
   vue: ^3.4.21
 
 dependencies:
-  '@ailer/pocket': 0.0.7
   vue: 3.4.21
 
 devDependencies:
+  '@ailer/pocket': 0.0.8
   '@vitejs/plugin-vue': 5.0.4_vite@5.2.7+vue@3.4.21
   vite: 5.2.7
 
 packages:
 
-  /@ailer/pocket/0.0.7:
-    resolution: {integrity: sha512-pISAvNTQqnpEc1O8i1a+de+OQx9f7TIeCsFiJjx+6y03Ek+tzvSTlpWeY3B/1JkMfelQBDZyEgxoDVB1PEVjgA==}
-    dev: false
+  /@ailer/pocket/0.0.8:
+    resolution: {integrity: sha512-hHof59yxG61Rp73dOueYIFsO+bQ7rAE+C2F7BcFrrXUWBXJzdrcZ9mMTKMI9yVs0FdPC2s52NhcK1qFtUVDLMQ==}
+    dev: true
 
   /@babel/helper-string-parser/7.24.1:
     resolution: {integrity: sha512-2ofRCjnnA9y+wk8b9IAREroeUP02KHp431N2mhKniy2yKIDKpbrHv9eXwm8cBeWQYcJmzv5qKCu65P47eCF7CQ==}
