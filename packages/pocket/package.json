@@ -24,7 +24,7 @@
     "utils"
   ],
   "author": "maotinay@gmail.com",
-  "license": "ISC",
+  "license": "MIT",
   "files": [
     "dist",
     "types/*d.ts",
