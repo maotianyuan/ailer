@@ -15,13 +15,13 @@ jobs:
 
     # 安装依赖和打包
     - name: Install and Build
-      run:  cd packages/pocket && pnpm install && pnpm run docs:build
+      run:  pnpm install && pnpm run docs:build
 
     # 部署到 GitHub Pages
     - name: Deploy vitepress docs
       uses: JamesIves/github-pages-deploy-action@v4
       with:
         # 要部署的文件夹 (最终会被拷贝到 gh-pages 分支下)
-        FOLDER: packages/pocket/.vitepress/dist
+        FOLDER: .vitepress/dist
         # 部署的分支，默认 gh-pages
         BRANCH: gh-pages
