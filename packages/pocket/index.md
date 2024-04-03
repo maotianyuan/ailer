@@ -4,7 +4,7 @@ layout: home
 
 hero:
   name: "Pocket"
-  text: "@zero/pocket"
+  text: "@ailer/pocket"
   tagline: 前端工程师-常用方法 JS 工具库
   actions:
     - theme: brand
