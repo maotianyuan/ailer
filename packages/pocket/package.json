@@ -1,6 +1,6 @@
 {
   "name": "@ailer/pocket",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "Put the tools into your pocket",
   "module": "dist/bundle.esm.js",
   "types": "types/index.d.ts",
