@@ -9,7 +9,7 @@ hero:
   actions:
     - theme: brand
       text: 开始使用
-      link: /doc/pocket
+      link: /packages/pocket/doc/pocket
 
 features:
   - title: 常用工具

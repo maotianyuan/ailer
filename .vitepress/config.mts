@@ -21,7 +21,7 @@ function getTree(file: string, prefix: string, tree = {}) {
   const curPath = prefix + cur
   if (!tree[curPath]) {
     tree[curPath] = {
-      link: '/doc/' + curPath + '.md',
+      link: '/packages/pocket/doc/' + curPath + '.md',
     }
   }
   if (rest.length > 0) {
@@ -51,7 +51,7 @@ function treeToItems(tree: IndexTree) {
   return items
 }
 
-const tree = fg.sync(['./doc/**/*.md'])
+const tree = fg.sync(['./packages/pocket/doc/**/*.md'])
   .map((path) => basename(path))
   .reduce((tree, file) => {
       getTree(file, '', tree)
@@ -66,8 +66,8 @@ export default defineConfig({
   base: '/ailer/',
   themeConfig: {
     nav: [
-      { text: '主页', link: '/doc/index' },
-      { text: 'API', link: '/doc/pocket' },
+      { text: '主页', link: '/packages/pocket/doc/index' },
+      { text: 'API', link: '/packages/pocket/doc/pocket' },
     ],
 
     sidebar: [

@@ -3,9 +3,14 @@
   "version": "0.0.1",
   "private": false,
   "scripts": {
-    "publish": "lerna bootstrap && lerna run build && lerna publish"
+    "publish": "lerna bootstrap && lerna run build && lerna publish",
+    "docs:dev": "vitepress dev",
+    "docs:build": "vitepress build",
+    "docs:preview": "vitepress preview"
   },
   "devDependencies": {
-    "lerna": "^4.0.0"
+    "fast-glob": "^3.3.2",
+    "lerna": "^4.0.0",
+    "vitepress": "^1.0.2"
   }
 }

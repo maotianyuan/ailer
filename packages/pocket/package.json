@@ -15,10 +15,7 @@
     "coverage": "vitest run --coverage",
     "doc": "api-extractor run --local --verbose && api-documenter markdown -i temp -o doc",
     "doc:debug": "api-extractor run --local --verbose --diagnostics && api-documenter markdown -i temp -o doc",
-    "trace": "tsc dist/types/index.d.ts --traceResolution > trace.log",
-    "docs:dev": "vitepress dev",
-    "docs:build": "vitepress build",
-    "docs:preview": "vitepress preview"
+    "trace": "tsc dist/types/index.d.ts --traceResolution > trace.log"
   },
   "keywords": [
     "utils"
@@ -52,11 +49,9 @@
     "@typescript-eslint/parser": "^7.4.0",
     "@vitest/coverage-istanbul": "^1.4.0",
     "eslint": "^8.57.0",
-    "fast-glob": "^3.3.2",
     "rollup": "4.13.1-1",
     "tslib": "^2.6.2",
     "typescript": "^5.4.3",
-    "vitepress": "^1.0.2",
     "vitest": "^1.4.0"
   },
   "gitHead": "4cb4a8aa8ae30418f4df33913ae18fe76e2ef8ee"
