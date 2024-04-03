@@ -1,0 +1,1 @@
+import{_ as a,c as s,o as e,a4 as t}from"./chunks/framework.C_gexpgy.js";const E=JSON.parse('{"title":"Pocket 🛠️","description":"","frontmatter":{},"headers":[],"relativePath":"README.md","filePath":"README.md"}'),i={name:"README.md"},l=t("",6),o=[l];function n(h,r,p,c,k,d){return e(),s("div",null,o)}const u=a(i,[["render",n]]);export{E as __pageData,u as default};
