@@ -26,10 +26,14 @@
   "author": "maotinay@gmail.com",
   "license": "ISC",
   "files": [
-    "dist/*.js",
+    "dist/**",
     "types/*d.ts",
     "types/**/*.d.ts"
   ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/maotianyuan/ailer"
+  }, 
   "devDependencies": {
     "@babel/core": "^7.24.3",
     "@babel/plugin-transform-runtime": "^7.24.3",
