@@ -19,7 +19,6 @@ const config = {
     nodeResolve(),
     commonjs(),
     babel({
-      babelHelpers: 'runtime',
       extensions: ['.js', '.ts'],
       exclude: "node_modules/**"
     }),
