@@ -77,7 +77,7 @@ export default defineConfig({
       },
     ],
     socialLinks: [
-      { icon: 'github', link: 'https://github.com/maotianyuan/zero/tree/main/packages/pocket' },
+      { icon: 'github', link: 'https://github.com/maotianyuan/ailer/tree/main/packages/pocket' },
     ],
     search: {
       provider: 'local'
