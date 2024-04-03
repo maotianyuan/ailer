@@ -5,7 +5,7 @@
   "module": "dist/bundle.esm.js",
   "types": "types/index.d.ts",
   "private": false,
-  "publicConfig": {
+  "publishConfig": {
     "access": "public"
   },
   "scripts": {
