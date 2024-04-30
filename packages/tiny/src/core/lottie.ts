@@ -3,7 +3,7 @@ import { TinyLottieLog } from '@logger/category'
 import path from 'path'
 
 interface IOptions {
-  input: Record<string, string>;
+  input: Record<string, string>
   output: {
     dir: string
   }
@@ -22,7 +22,7 @@ export class TinyLottie {
   async execute(): Promise<void> {
     const { input } = this.options
     for (const [name, dir] of Object.entries(input)) {
-      await this.writeFile({ name, dir });
+      await this.writeFile({ name, dir })
     }
   }
   // 写入转换后的文件
@@ -38,14 +38,14 @@ export class TinyLottie {
     fileHelper.createDirectory(outputDir)
     const outputFile = path.resolve(outputDir, `${name}.json`)
     fileHelper.writeFile(outputFile, jsonString)
-    TinyLottieLog.log(`File '${outputFile}' written successfully.`);
+    TinyLottieLog.log(`File '${outputFile}' written successfully.`)
   }
   // 替换 lottie 文件中的图片数据为 base64
   async replaceLottie(fileInfo: IFileInfo): Promise<any> {
     const mapping = await this.getBase64(fileInfo)
     const data = await this.getLottieJson(fileInfo)
     if (!data) {
-      return null;
+      return null
     }
     data.assets.forEach((item: any) => {
       if (item.u) {
@@ -53,48 +53,48 @@ export class TinyLottie {
         item.u = ''
       }
     })
-    return data;
+    return data
   }
   // 获取 lottie 文件中图片文件的 base64 数据
   async getBase64(fileInfo : IFileInfo) {
     const { dir } = fileInfo
     const imagesDir = path.resolve(dir, 'images')
     if (!fileHelper.isDirectory(imagesDir)) {
-      TinyLottieLog.error(`Error: Images directory '${imagesDir}' does not exist.`);
-      return {};
+      TinyLottieLog.error(`Error: Images directory '${imagesDir}' does not exist.`)
+      return {}
     }
-    const list = fileHelper.getFileList(imagesDir);
-    const result: Record<string, string> = {};
+    const list = fileHelper.getFileList(imagesDir)
+    const result: Record<string, string> = {}
     list.forEach(fileName => {
       if (fileName.endsWith('.jpg') || fileName.endsWith('.png')) {
-        const imgPath = path.resolve(imagesDir, fileName);
-        const imageData = fileHelper.readFile(imgPath);
-        const base64Data = imageData?.toString('base64');
-        const extra = fileName.split('.')[1];
-        result[fileName] = `data:image/${extra};base64,${base64Data}`;
+        const imgPath = path.resolve(imagesDir, fileName)
+        const imageData = fileHelper.readFile(imgPath)
+        const base64Data = imageData?.toString('base64')
+        const extra = fileName.split('.')[1]
+        result[fileName] = `data:image/${extra}base64,${base64Data}`
       } else {
-        TinyLottieLog.error(`Error: Failed to read image file '${fileName}'.`);
+        TinyLottieLog.error(`Error: Failed to read image file '${fileName}'.`)
       }
     })
-    return result;
+    return result
   }
   // 获取 lottie 文件的 JSON 数据
   async getLottieJson(fileInfo : IFileInfo) {
     const { dir } = fileInfo
-    const jsonFilePath = fileHelper.findFirstJsonFile(dir);
+    const jsonFilePath = fileHelper.findFirstJsonFile(dir)
     if (!jsonFilePath) {
-      return;
+      return
     }
     const data = fileHelper.readFile(jsonFilePath)
     if (!data) {
-      TinyLottieLog.error(`Error: Failed to read lottie JSON file '${jsonFilePath}'.`);
-      return null;
+      TinyLottieLog.error(`Error: Failed to read lottie JSON file '${jsonFilePath}'.`)
+      return null
     }
     try {
-      return JSON.parse(data.toString());
+      return JSON.parse(data.toString())
     } catch (error) {
-      TinyLottieLog.error(`Error: Invalid JSON format in file '${jsonFilePath}'.`);
-      return null;
+      TinyLottieLog.error(`Error: Invalid JSON format in file '${jsonFilePath}'.`)
+      return null
     }
   }
 }
