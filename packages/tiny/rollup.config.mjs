@@ -20,8 +20,10 @@ const config = {
     nodeResolve(),
     commonjs(),
     babel({
+      presets: ['@babel/preset-env'],
       extensions: ['.js', '.ts'],
-      exclude: "node_modules/**"
+      exclude: "node_modules/**",
+      babelHelpers: 'bundled' // 显式地设置 babelHelpers 为 'bundled'
     }),
     eslint({
       throwOnError: true,
