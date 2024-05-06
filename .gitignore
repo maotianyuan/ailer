@@ -31,5 +31,5 @@ dist-ssr
 
 
 # Tiny
-./packages/tiny/public/compress/*
-./packages/tiny/cacert.pem
+**/tiny/public/compress/**
+**.pem
