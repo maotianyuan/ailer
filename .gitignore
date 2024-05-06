@@ -28,3 +28,8 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+
+# Tiny
+./packages/tiny/public/compress/*
+./packages/tiny/cacert.pem

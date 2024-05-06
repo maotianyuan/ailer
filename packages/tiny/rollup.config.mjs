@@ -1,6 +1,7 @@
 import { resolve } from 'path';
 import nodeResolve from '@rollup/plugin-node-resolve'
 import commonjs from '@rollup/plugin-commonjs';
+import json from '@rollup/plugin-json';
 import { babel } from '@rollup/plugin-babel';
 import eslint from '@rollup/plugin-eslint';
 import alias from '@rollup/plugin-alias';
@@ -17,6 +18,7 @@ const config = {
     { file: resolve('dist/index.js'), format: 'cjs' },
   ],
   plugins: [
+    json(),
     nodeResolve(),
     commonjs(),
     babel({

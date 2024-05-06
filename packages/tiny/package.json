@@ -10,7 +10,7 @@
   },
   "scripts": {
     "dev": "rollup -c -w",
-    "run": "node example/index.js",
+    "example": "node example/index.js",
     "build": "rollup -c"
   },
   "keywords": [
@@ -38,6 +38,7 @@
     "@rollup/plugin-babel": "^6.0.4",
     "@rollup/plugin-commonjs": "^25.0.7",
     "@rollup/plugin-eslint": "^9.0.5",
+    "@rollup/plugin-json": "^6.1.0",
     "@rollup/plugin-node-resolve": "^15.2.3",
     "@rollup/plugin-typescript": "^11.1.6",
     "@types/node": "^20.11.30",
@@ -47,6 +48,7 @@
     "fs-extra": "^11.2.0",
     "fs-jetpack": "^5.1.0",
     "rollup": "4.13.1-1",
+    "tinify": "^1.7.1",
     "tslib": "^2.6.2",
     "typescript": "^5.4.3"
   }

@@ -1,11 +1,18 @@
 import * as fileHelper from '@utils/fileHelper'
 import { TinyLottieLog } from '@logger/category'
 import path from 'path'
+import tinify from 'tinify'
 
 interface IOptions {
   input: Record<string, string>
   output: {
     dir: string
+  }
+  config: {
+    tinyPngKey: string
+    isTinyPng: boolean
+    images: string
+    tinypng: string
   }
 }
 interface IFileInfo {
@@ -58,20 +65,38 @@ export class TinyLottie {
   // 获取 lottie 文件中图片文件的 base64 数据
   async getBase64(fileInfo : IFileInfo) {
     const { dir } = fileInfo
-    const imagesDir = path.resolve(dir, 'images')
+    const { images, tinypng } = this.options.config;
+    const imagesDir = path.resolve(dir, images)
     if (!fileHelper.isDirectory(imagesDir)) {
       TinyLottieLog.error(`Error: Images directory '${imagesDir}' does not exist.`)
       return {}
     }
     const list = fileHelper.getFileList(imagesDir)
     const result: Record<string, string> = {}
-    list.forEach(fileName => {
+    list.forEach(async fileName => {
       if (fileName.endsWith('.jpg') || fileName.endsWith('.png')) {
         const imgPath = path.resolve(imagesDir, fileName)
         const imageData = fileHelper.readFile(imgPath)
-        const base64Data = imageData?.toString('base64')
-        const extra = fileName.split('.')[1]
-        result[fileName] = `data:image/${extra}base64,${base64Data}`
+        const extname = fileName.split('.')[1]
+
+        const getBase64Data = async () => {
+          const { config } = this.options
+          const { isTinyPng, tinyPngKey } = config
+          if (!isTinyPng) {
+            return imageData?.toString('base64');
+          } else {
+            if (imageData) {
+              tinify.key = tinyPngKey;
+              const source = tinify.fromBuffer(imageData);
+              const buff: any = await source.toBuffer();
+              const base64 = buff.toString('base64');
+              const outputFile = path.resolve(dir, tinypng, fileName)
+              fileHelper.writeFile(outputFile, buff)
+              return base64;
+            }
+          }
+        }
+        result[fileName] = `data:image/${extname}base64,${await getBase64Data()}`
       } else {
         TinyLottieLog.error(`Error: Failed to read image file '${fileName}'.`)
       }
