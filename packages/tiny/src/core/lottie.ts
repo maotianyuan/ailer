@@ -1,4 +1,4 @@
-import * as dotenv from 'dotenv';
+import * as dotenv from 'dotenv'
 import * as fileHelper from '@utils/fileHelper'
 import { TinyLottieLog } from '@logger/category'
 import path from 'path'
