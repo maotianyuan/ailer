@@ -3,7 +3,6 @@ const path = require('path');
 
 new TinyLottie({
   config: {
-    tinyPngKey: 'S1l02pRSCWmbSHs0tFsnhZB2KQGD47Vw',
     isTinyPng: true,
     images: 'images',
     tinypng: 'tinypng',

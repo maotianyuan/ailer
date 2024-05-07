@@ -1,3 +1,4 @@
+import * as dotenv from 'dotenv';
 import * as fileHelper from '@utils/fileHelper'
 import { TinyLottieLog } from '@logger/category'
 import path from 'path'
@@ -9,7 +10,6 @@ interface IOptions {
     dir: string
   }
   config: {
-    tinyPngKey: string
     isTinyPng: boolean
     images: string
     tinypng: string
@@ -24,6 +24,7 @@ export class TinyLottie {
   public options: IOptions
   constructor(options: IOptions) {
     this.options = options
+    dotenv.config({ path: '.env' });
     this.execute()
   }
   async execute(): Promise<void> {
@@ -81,11 +82,16 @@ export class TinyLottie {
 
         const getBase64Data = async () => {
           const { config } = this.options
-          const { isTinyPng, tinyPngKey } = config
+          const { isTinyPng } = config
+          const tinyPngKey = process.env.TINYPNG_API_KEY;
           if (!isTinyPng) {
             return imageData?.toString('base64');
           } else {
             if (imageData) {
+              if (!tinyPngKey) {
+                TinyLottieLog.error(`Error: TINYPNG_API_KEY 未设置， 无法压缩图片`)
+                return imageData?.toString('base64');
+              }
               tinify.key = tinyPngKey;
               const source = tinify.fromBuffer(imageData);
               const buff: any = await source.toBuffer();
