@@ -24,7 +24,7 @@ export class TinyLottie {
   public options: IOptions
   constructor(options: IOptions) {
     this.options = options
-    dotenv.config({ path: '.env' });
+    dotenv.config({ path: '.env' })
     this.execute()
   }
   async execute(): Promise<void> {
@@ -65,52 +65,52 @@ export class TinyLottie {
   }
   // 获取 lottie 文件中图片文件的 base64 数据
   async getBase64(fileInfo: IFileInfo) {
-    const { dir } = fileInfo;
-    const { images, tinypng } = this.options.config;
-    const imagesDir = path.resolve(dir, images);
+    const { dir } = fileInfo
+    const { images, tinypng } = this.options.config
+    const imagesDir = path.resolve(dir, images)
     if (!fileHelper.isDirectory(imagesDir)) {
-      TinyLottieLog.error(`Error: Images directory '${imagesDir}' does not exist.`);
-      return {};
+      TinyLottieLog.error(`Error: Images directory '${imagesDir}' does not exist.`)
+      return {}
     }
-    const list = fileHelper.getFileList(imagesDir);
-    const result: Record<string, string> = {};
+    const list = fileHelper.getFileList(imagesDir)
+    const result: Record<string, string> = {}
     await Promise.all(
       list.map(async (fileName) => {
         if (fileName.endsWith('.jpg') || fileName.endsWith('.png')) {
-          const imgPath = path.resolve(imagesDir, fileName);
-          const imageData = fileHelper.readFile(imgPath);
-          const extname = fileName.split('.')[1];
+          const imgPath = path.resolve(imagesDir, fileName)
+          const imageData = fileHelper.readFile(imgPath)
+          const extname = fileName.split('.')[1]
           const getBase64Data = async () => {
-            const { config } = this.options;
-            const { isTinyPng } = config;
-            const tinyPngKey = process.env.TINYPNG_API_KEY;
+            const { config } = this.options
+            const { isTinyPng } = config
+            const tinyPngKey = process.env.TINYPNG_API_KEY
             if (!isTinyPng) {
-              return imageData?.toString('base64');
+              return imageData?.toString('base64')
             } else {
               if (imageData) {
                 if (!tinyPngKey) {
-                  TinyLottieLog.info(`没有 tinyPngKey 不压缩图片`);
-                  return imageData?.toString('base64');
+                  TinyLottieLog.info(`没有 tinyPngKey 不压缩图片`)
+                  return imageData?.toString('base64')
                 }
-                TinyLottieLog.info(`tinifyPng 压缩图片`);
-                tinify.key = tinyPngKey;
-                const source = tinify.fromBuffer(imageData);
-                const buff: any = await source.toBuffer();
-                const base64 = buff.toString('base64');
-                const outputFile = path.resolve(dir, tinypng, fileName);
-                fileHelper.writeFile(outputFile, buff);
-                TinyLottieLog.info(`tinifyPng 压缩图片写入本地文件`);
-                return base64;
+                TinyLottieLog.info(`tinifyPng 压缩图片`)
+                tinify.key = tinyPngKey
+                const source = tinify.fromBuffer(imageData)
+                const buff: any = await source.toBuffer()
+                const base64 = buff.toString('base64')
+                const outputFile = path.resolve(dir, tinypng, fileName)
+                fileHelper.writeFile(outputFile, buff)
+                TinyLottieLog.info(`tinifyPng 压缩图片写入本地文件`)
+                return base64
               }
             }
-          };
-          result[fileName] = `data:image/${extname}base64,${await getBase64Data()}`;
+          }
+          result[fileName] = `data:image/${extname};base64,${await getBase64Data()}`
         } else {
-          TinyLottieLog.error(`Error: Failed to read image file '${fileName}'.`);
+          TinyLottieLog.error(`Error: Failed to read image file '${fileName}'.`)
         }
       })
-    );
-    return result;
+    )
+    return result
   }
 
   // 获取 lottie 文件的 JSON 数据
