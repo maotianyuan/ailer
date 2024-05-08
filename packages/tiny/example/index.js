@@ -1,4 +1,4 @@
-const { TinyLottie } = require('../dist/index');
+const { TinyLottie, TinyImage } = require('../dist/index');
 const path = require('path');
 
 new TinyLottie({
@@ -8,6 +8,7 @@ new TinyLottie({
     tinypng: 'tinypng',
   },
   input: {
+    // xiaolian: path.resolve(process.cwd(), 'public', 'assets', 'xiaolian'),
     bunting: path.resolve(process.cwd(), 'public', 'assets', 'bunting'),
     // caidai: path.resolve(process.cwd(), 'public', 'assets', 'caidai'),
     // credit: path.resolve(process.cwd(), 'public', 'assets', 'credit'),

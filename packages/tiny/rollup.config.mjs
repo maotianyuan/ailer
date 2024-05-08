@@ -13,13 +13,16 @@ const config = {
     propertyReadSideEffects: false,
     tryCatchDeoptimization: false
   },
+  external: ['tinify'], // 告诉 Rollup 忽略对 imagemin 库的检查
   input: resolve('src/index.ts'),
   output: [
     { file: resolve('dist/index.js'), format: 'cjs' },
   ],
   plugins: [
     json(),
-    nodeResolve(),
+    nodeResolve({
+      preferBuiltins: true // 设置 preferBuiltins 为 false 禁用对内置模块的优先使用
+    }),
     commonjs(),
     babel({
       presets: ['@babel/preset-env'],
