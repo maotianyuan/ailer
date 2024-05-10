@@ -8,10 +8,15 @@ new TinyLottie({
     tinypng: 'tinypng',
   },
   input: {
-    // xiaolian: path.resolve(process.cwd(), 'public', 'assets', 'xiaolian'),
-    bunting: path.resolve(process.cwd(), 'public', 'assets', 'bunting'),
-    // caidai: path.resolve(process.cwd(), 'public', 'assets', 'caidai'),
-    // credit: path.resolve(process.cwd(), 'public', 'assets', 'credit'),
+    // 'right': path.resolve(process.cwd(), 'public', 'assets', 'right'),
+    // 'wrong': path.resolve(process.cwd(), 'public', 'assets', 'wrong'),
+    // 'join': path.resolve(process.cwd(), 'public', 'assets', 'join'),
+    // 'noJoin': path.resolve(process.cwd(), 'public', 'assets', 'noJoin'),
+    // 'keepTrying': path.resolve(process.cwd(), 'public', 'assets', 'keepTrying'),
+    // 'label-1': path.resolve(process.cwd(), 'public', 'assets', 'label-1'),
+    // 'label-2': path.resolve(process.cwd(), 'public', 'assets', 'label-2'),
+    // 'label-3': path.resolve(process.cwd(), 'public', 'assets', 'label-3'),
+    // 'label-4': path.resolve(process.cwd(), 'public', 'assets', 'label-4'),
   },
   output: {
     dir: path.resolve(process.cwd(), 'public', 'compress')
