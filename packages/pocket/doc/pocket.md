@@ -407,6 +407,8 @@ Description
 
 </td><td>
 
+TypeScript 中的“isRgbColor”函数通过验证数组结构和通道值来检查给定颜色是否为 RGB 格式。
+
 
 </td></tr>
 <tr><td>
@@ -415,6 +417,8 @@ Description
 
 
 </td><td>
+
+函数“isType”检查给定的上下文是否属于指定的类型。
 
 
 </td></tr>
@@ -503,6 +507,17 @@ Description
 </td><td>
 
 如果字符串以指定的前缀开头，则去除该前缀并返回结果字符串；否则返回原始字符串
+
+
+</td></tr>
+<tr><td>
+
+[substringBytes(str, start, end)](./pocket.substringbytes.md)
+
+
+</td><td>
+
+根据字节数，截取字符串
 
 
 </td></tr>

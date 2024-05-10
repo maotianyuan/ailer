@@ -24,7 +24,7 @@ import { random, clamp } from './modules/math';
 import { pipe } from './modules/pipe';
 import { queryToJson } from './modules/queryToJson';
 import { getItem, setItem, removeItem } from './modules/storage';
-import { bytesLength, stripPrefix, ensurePrefix } from './modules/string';
+import { substringBytes, bytesLength, stripPrefix, ensurePrefix } from './modules/string';
 import { syncNextTick } from './modules/syncNextTick';
 import { throttle } from './modules/throttle';
 import { formatTime } from './modules/time';
@@ -39,6 +39,6 @@ export {
   enterFullScreen, exitFullScreen, toggleFullScreen, isFullScreen,
   getDomain, getType, idleLoadResource, imageToCanvas, imageToDataURI, imageToBlob,
   isBase64, isType, isRgbColor, isHexColor, random, clamp, pipe, queryToJson,
-  getItem, setItem, removeItem, bytesLength, stripPrefix, ensurePrefix,
+  getItem, setItem, removeItem, substringBytes, bytesLength, stripPrefix, ensurePrefix,
   syncNextTick, throttle, formatTime, toHex, unique, fetchBlob
 };

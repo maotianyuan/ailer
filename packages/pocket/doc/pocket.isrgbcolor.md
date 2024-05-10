@@ -4,6 +4,8 @@
 
 ## isRgbColor() function
 
+TypeScript 中的“isRgbColor”函数通过验证数组结构和通道值来检查给定颜色是否为 RGB 格式。
+
 **Signature:**
 
 ```typescript
@@ -40,10 +42,14 @@ any
 
 </td><td>
 
+“isRgbColor”函数中的“color”参数表示一个值，通过检查该值来确定它是否是 RGB 颜色。它应该是一个包含 3 或 4 个数值的数组，分别代表红色、绿色、蓝色通道（以及可选的 alpha 通道）
+
 
 </td></tr>
 </tbody></table>
 **Returns:**
 
 color is RgbColor
+
+`isRgbColor` 函数返回一个布尔值，指示输入的 `color` 是否是有效的 RGB 颜色。该函数检查“color”是否是一个数组，然后根据特定条件验证数组中的每个通道值。如果所有通道值都通过验证，且数组长度为 3 或 4，则函数返回 true，表示输入
 

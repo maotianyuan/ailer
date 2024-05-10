@@ -4,6 +4,8 @@
 
 ## isType() function
 
+函数“isType”检查给定的上下文是否属于指定的类型。
+
 **Signature:**
 
 ```typescript
@@ -39,6 +41,8 @@ string
 
 
 </td><td>
+
+“type”参数是一个字符串，表示您要检查的数据类型。
 
 
 </td></tr>

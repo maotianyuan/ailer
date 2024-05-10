@@ -1,4 +1,64 @@
 /**
+ * 根据字节数，截取字符串
+ * @param str 目标字符串
+ * @param start 开始位置
+ * @param end 结束位置，默认为字符串的字节数
+ * @example
+ * // Returns 'hell'
+ * substringBytes('hello, 世界!', 0, 4);
+ * @example
+ * // Returns 'hello, 世界!'
+ * substringBytes('hello, 世界!', 0);
+ */
+const substringBytes = (str: string = '', start: number, end?: number): string => {
+  if (start < 0) {
+    throw new Error('start must be non-negative.');
+  }
+
+  // 如果未提供 end 参数，则使用字符串的字节数
+  end = end ?? bytesLength(str);
+
+  if (start >= end) {
+    throw new Error('start must be less than end.');
+  }
+
+  let len = 0;
+  let result = '';
+  let lastIndex = 0;
+
+  // 预先计算字符串的长度，减少每次循环中的重复计算
+  const strLength = str.length;
+
+  for (let i = 0; i < strLength; i++) {
+    const code = str.charCodeAt(i);
+    const bytes = ((code >= 0 && code <= 255) || (code >= 0xff61 && code <= 0xff9f)) ? 1 : 2;
+
+    // 更新字节数长度
+    len += bytes;
+
+    // 如果长度在范围内，则添加到结果字符串中
+    if (len >= start && len <= end) {
+      result += str[i];
+      lastIndex = i;
+    } else if (len > end) {
+      // 如果超出范围，则退出循环
+      break;
+    }
+  }
+
+  // 如果截取的是辅助平面上的字符，将其补全，避免出现乱码
+  const lastCode = result.charCodeAt(result.length - 1); // 截取的最后一个字符码
+  const nextCode = str.charCodeAt(lastIndex + 1); // 未截取的第一个字符码
+
+  if (lastCode >= 0xd800 && lastCode <= 0xdbff && nextCode >= 0xdc00 && nextCode <= 0xdfff) {
+    result += str[lastIndex + 1];
+  }
+
+  return result;
+};
+
+
+/**
  * 计算字符串的字节数
  * 英文字符算一个字节，中文字符算两个字节
  * @param str 要计算字节数的字符串
@@ -38,7 +98,9 @@ const stripPrefix = (s: string, prefix: string): string => s.startsWith(prefix) 
  */
 const ensurePrefix = (s: string, prefix: string): string =>  s.startsWith(prefix) ? s : prefix + s;
 
+
 export {
+  substringBytes,
   bytesLength,
   stripPrefix,
   ensurePrefix,
