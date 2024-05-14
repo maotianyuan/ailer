@@ -1,24 +1,41 @@
-const { TinyLottie, TinyImage } = require('../dist/index');
+const { TinyLottieOuter, TinyLottieInner } = require('../dist/index');
 const path = require('path');
 
-new TinyLottie({
+/** 对外挂图片资源进行压缩，同时生成对应 json 文件 */
+// new TinyLottieOuter({
+//   config: {
+//     /** 外挂 熊猫 PNG 压缩 */
+//     isTinyPng: true,
+//     /** 外挂 图片地址 */
+//     images: 'images',
+//     /** 压缩后 外挂 图片地址 */
+//     tinypng: 'tinypng',
+//   },
+//   input: {
+//     '精英': path.resolve(process.cwd(), 'public', 'assets', '精英'),
+//     '学霸': path.resolve(process.cwd(), 'public', 'assets', '学霸'),
+//     '学神': path.resolve(process.cwd(), 'public', 'assets', '学神'),
+//   },
+//   output: {
+//     dir: path.resolve(process.cwd(), 'public', 'compress')
+//   }
+// });
+
+/** 对 base64json 文件的图片进行压缩，同时讲图片提取出来 */
+new TinyLottieInner({
   config: {
-    isTinyPng: true,
+    isTinyPng: false,
+    /** 外挂 图片地址 */
     images: 'images',
+    /** 压缩后 外挂 图片地址 */
     tinypng: 'tinypng',
   },
   input: {
-    // 'right': path.resolve(process.cwd(), 'public', 'assets', 'right'),
-    // 'wrong': path.resolve(process.cwd(), 'public', 'assets', 'wrong'),
-    // 'join': path.resolve(process.cwd(), 'public', 'assets', 'join'),
-    // 'noJoin': path.resolve(process.cwd(), 'public', 'assets', 'noJoin'),
-    // 'keepTrying': path.resolve(process.cwd(), 'public', 'assets', 'keepTrying'),
-    // 'label-1': path.resolve(process.cwd(), 'public', 'assets', 'label-1'),
-    // 'label-2': path.resolve(process.cwd(), 'public', 'assets', 'label-2'),
-    // 'label-3': path.resolve(process.cwd(), 'public', 'assets', 'label-3'),
-    // 'label-4': path.resolve(process.cwd(), 'public', 'assets', 'label-4'),
+    'qiaoheiban': path.resolve(process.cwd(), 'public', 'assets', 'qiaoheiban'),
+    // 'fangdazhao': path.resolve(process.cwd(), 'public', 'assets', 'fangdazhao'),
   },
   output: {
     dir: path.resolve(process.cwd(), 'public', 'compress')
   }
 });
+

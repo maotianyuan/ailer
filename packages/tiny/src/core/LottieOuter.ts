@@ -20,7 +20,7 @@ interface IFileInfo {
   dir: string
 }
 
-export class TinyLottie {
+export class TinyLottieOuter {
   public options: IOptions
   constructor(options: IOptions) {
     this.options = options
