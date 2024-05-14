@@ -5,13 +5,19 @@ import path from 'path'
 import tinify from 'tinify'
 
 interface IOptions {
+  /** 需要压缩文件 */
   input: Record<string, string>
+  /** 压缩后文件 */
   output: {
     dir: string
   }
+  /** 配置信息 */
   config: {
+    /** 是否开启熊猫压缩 */
     isTinyPng: boolean
+    /** 图片地址名 */
     images: string
+    /** 熊猫压缩后目录 */
     tinypng: string
   }
 }
@@ -20,6 +26,9 @@ interface IFileInfo {
   dir: string
 }
 
+/**
+ * 用于压缩 Lottie (内置) ，并转化成外挂
+ */
 export class TinyLottieInner {
   public options: IOptions
   constructor(options: IOptions) {

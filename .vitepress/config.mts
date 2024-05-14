@@ -1,83 +1,33 @@
-import { basename } from 'path'
-import type { DefaultTheme } from 'vitepress'
 import { defineConfig } from 'vitepress'
-import fg from 'fast-glob'
-
-interface IndexTree {
-  [index: string]: {
-    link: string
-    items?: IndexTree
-  }
-}
+import { SideBar } from './sidebar.mjs'
 
 
-function resolveTitle(title: string) {
-  return title === 'utils' ? title : title.replace('pocket.', '')
-}
-
-// 将md文档列表转为树结构
-function getTree(file: string, prefix: string, tree = {}) {
-  const [ cur, ...rest ] = file.replace('.md', '').split('.')
-  const curPath = prefix + cur
-  if (!tree[curPath]) {
-    tree[curPath] = {
-      link: '/packages/pocket/doc/' + curPath + '.md',
-    }
-  }
-  if (rest.length > 0) {
-    if (!tree[curPath].items) {
-      tree[curPath].items = {}
-    }
-    getTree(rest.join('.'), curPath + '.', tree[curPath].items)
-  }
-}
-
-// 将树结构转为目录数组
-function treeToItems(tree: IndexTree) {
-  const items: DefaultTheme.SidebarItem[] = []
-  Object.keys(tree).forEach((key) => {
-    const item: DefaultTheme.SidebarItem = {
-      text: resolveTitle(key),
-      link: tree[key].link,
-    }
-    if (tree[key].items) {
-      if (!item.items) {
-        item.items = []
-      }
-      item.items.push(...treeToItems(tree[key].items!))
-    }
-    items.push(item)
-  })
-  return items
-}
-
-const tree = fg.sync(['./packages/pocket/doc/**/*.md'])
-  .map((path) => basename(path))
-  .reduce((tree, file) => {
-      getTree(file, '', tree)
-      return tree
-  }, {})
-
-const docs: DefaultTheme.SidebarItem[] = treeToItems(tree)
+const { list: PocketSideBar } = new SideBar('pocket');
+const { list: TinySidebar } = new SideBar('tiny');
 
 export default defineConfig({
-  title: 'Pocket',
-  description: '前端工程师-常用方法 JS 工具库',
+  title: 'Ailer',
+  description: '前端工程师-工具库',
   base: '/ailer/',
   themeConfig: {
     nav: [
-      { text: '主页', link: '/packages/pocket/doc/index' },
-      { text: 'API', link: '/packages/pocket/doc/pocket' },
+      { text: 'Pocket', link: '/packages/pocket/doc/pocket' },
+      { text: 'Tiny', link: '/packages/tiny/doc/index' },
     ],
-
     sidebar: [
       {
-        text: 'pocket',
-        items: docs,
+        text: 'Pocket',
+        items: PocketSideBar,
+        collapsed: true,
+      },
+      {
+        text: 'Tiny',
+        items: TinySidebar,
+        collapsed: true,
       },
     ],
     socialLinks: [
-      { icon: 'github', link: 'https://github.com/maotianyuan/ailer/tree/main/packages/pocket' },
+      { icon: 'github', link: 'https://github.com/maotianyuan/ailer/tree/main/packages' },
     ],
     search: {
       provider: 'local'

@@ -1,3 +1,6 @@
+## 使用实例
+
+```js
 const { TinyLottieOuter, TinyLottieInner } = require('../dist/index');
 const path = require('path');
 
@@ -37,4 +40,4 @@ new TinyLottieInner({
     dir: path.resolve(process.cwd(), 'public', 'compress')
   }
 });
-
+```
