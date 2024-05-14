@@ -2,7 +2,7 @@
   "name": "@ailer/tiny",
   "version": "0.0.10",
   "description": "tiny lottie compress",
-  "module": "dist/bundle.esm.js",
+  "main": "dist/index.js",
   "types": "./dist/types/index.d.ts",
   "private": false,
   "publishConfig": {
@@ -10,7 +10,6 @@
   },
   "scripts": {
     "dev": "rollup -c -w",
-    "example": "node example/index.js",
     "build": "rollup -c"
   },
   "keywords": [

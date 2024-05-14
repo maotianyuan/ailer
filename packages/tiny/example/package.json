@@ -1,0 +1,15 @@
+{
+  "name": "example",
+  "version": "1.0.0",
+  "description": "",
+  "main": "remote.js",
+  "scripts": {
+    "local": "node local.js",
+    "remote": "node remote.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@ailer/tiny": "^0.0.10"
+  }
+}

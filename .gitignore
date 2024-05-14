@@ -31,7 +31,6 @@ dist-ssr
 
 
 # Tiny
-**/tiny/public/compress/**
-**/tiny/public/assets/**
+**/tiny/example/public/**
 **.pem
 **.env
