@@ -125,10 +125,10 @@ export const isFullScreen: () => boolean;
 // @public
 export const isHexColor: (color: string) => boolean;
 
-// @public (undocumented)
+// @public
 export const isRgbColor: (color: any) => color is RgbColor;
 
-// @public (undocumented)
+// @public
 export const isType: (type: string) => (context: any) => boolean;
 
 // @public
@@ -157,6 +157,9 @@ export const setItem: <T>(key: string, value: T) => void;
 
 // @public
 export const stripPrefix: (s: string, prefix: string) => string;
+
+// @public
+export const substringBytes: (str: string | undefined, start: number, end?: number) => string;
 
 // @public
 export const syncNextTick: (vueInstance: any) => Promise<null>;

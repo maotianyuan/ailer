@@ -1,8 +1,8 @@
 {
-  "name": "@ailer/pocket",
+  "name": "@ailer/tiny",
   "version": "0.0.12",
-  "description": "Put the tools into your pocket",
-  "module": "dist/bundle.esm.js",
+  "description": "tiny lottie compress",
+  "main": "dist/index.js",
   "types": "./dist/types/index.d.ts",
   "private": false,
   "publishConfig": {
@@ -10,15 +10,10 @@
   },
   "scripts": {
     "dev": "rollup -c -w",
-    "build": "rollup -c",
-    "test": "vitest",
-    "coverage": "vitest run --coverage",
-    "doc": "api-extractor run --local --verbose && api-documenter markdown -i temp -o doc",
-    "doc:debug": "api-extractor run --local --verbose --diagnostics && api-documenter markdown -i temp -o doc",
-    "trace": "tsc dist/types/index.d.ts --traceResolution > trace.log"
+    "build": "rollup -c"
   },
   "keywords": [
-    "utils"
+    "Lottie"
   ],
   "author": "maotinay@gmail.com",
   "license": "MIT",
@@ -38,21 +33,23 @@
     "@babel/plugin-transform-runtime": "^7.24.3",
     "@babel/preset-env": "^7.24.3",
     "@babel/preset-typescript": "^7.24.1",
-    "@microsoft/api-documenter": "^7.24.1",
-    "@microsoft/api-extractor": "^7.43.0",
+    "@rollup/plugin-alias": "^5.1.0",
     "@rollup/plugin-babel": "^6.0.4",
     "@rollup/plugin-commonjs": "^25.0.7",
     "@rollup/plugin-eslint": "^9.0.5",
+    "@rollup/plugin-json": "^6.1.0",
     "@rollup/plugin-node-resolve": "^15.2.3",
     "@rollup/plugin-typescript": "^11.1.6",
     "@types/node": "^20.11.30",
     "@typescript-eslint/parser": "^7.4.0",
-    "@vitest/coverage-istanbul": "^1.4.0",
+    "dotenv": "^16.4.5",
     "eslint": "^8.57.0",
+    "fs-extra": "^11.2.0",
+    "fs-jetpack": "^5.1.0",
     "rollup": "4.13.1-1",
+    "tinify": "^1.7.1",
     "tslib": "^2.6.2",
-    "typescript": "^5.4.3",
-    "vitest": "^1.4.0"
+    "typescript": "^5.4.3"
   },
   "gitHead": "0a2b29b5b0f2b79b5ded5978f3043f73e3291e2a"
 }
