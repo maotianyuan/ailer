@@ -1,13 +1,13 @@
 lockfileVersion: 5.4
 
 specifiers:
-  '@ailer/tiny': ^0.0.10
+  '@ailer/tiny': ^0.0.12
 
 dependencies:
-  '@ailer/tiny': 0.0.10
+  '@ailer/tiny': 0.0.12
 
 packages:
 
-  /@ailer/tiny/0.0.10:
-    resolution: {integrity: sha512-08cqE2v82h9YhcCuilxIg30cjSxT4235jlj6p8ZaJkCmKUC+/4HOvqdd3jM9BZ0Le8wl439I5FQvVEBhIuqX+g==}
+  /@ailer/tiny/0.0.12:
+    resolution: {integrity: sha512-l0sJyn58KASCDT/P+OK3GUUxbGLbykOG2oT516h1VjYHn3XqlbLpNZwDD8DfOawScOKgkNXYGdOpggxZr17eLA==}
     dev: false

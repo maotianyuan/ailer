@@ -10,6 +10,6 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@ailer/tiny": "^0.0.10"
+    "@ailer/tiny": "^0.0.12"
   }
 }
