@@ -1,6 +1,6 @@
 {
   "name": "@ailer/tiny",
-  "version": "0.0.1",
+  "version": "0.0.9",
   "description": "tiny lottie compress",
   "module": "dist/bundle.esm.js",
   "types": "./dist/types/index.d.ts",
