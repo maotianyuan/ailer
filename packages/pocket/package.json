@@ -1,6 +1,6 @@
 {
   "name": "@ailer/pocket",
-  "version": "0.0.11",
+  "version": "0.0.10",
   "description": "Put the tools into your pocket",
   "module": "dist/bundle.esm.js",
   "types": "./dist/types/index.d.ts",
@@ -54,5 +54,5 @@
     "typescript": "^5.4.3",
     "vitest": "^1.4.0"
   },
-  "gitHead": "4cb4a8aa8ae30418f4df33913ae18fe76e2ef8ee"
+  "gitHead": "af591dda8bec373c9320a513ed98cc0f986261c3"
 }
