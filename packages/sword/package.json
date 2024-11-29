@@ -25,7 +25,9 @@
     ".": {
       "import": "./dist/sword.es.js",
       "require": "./dist/sword.umd.js"
-    }
+    },
+    "./Button": "./dist/Button.js",
+    "./Link": "./dist/Link.js"
   },
   "devDependencies": {
     "@tsconfig/node22": "^22.0.0",

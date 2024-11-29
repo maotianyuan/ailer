@@ -1,8 +1,8 @@
-import Link from './src/index.vue';
+import SoLink from './src/index.vue';
 import type { App } from "vue";
 
-Link.install = (app: App) => {
-  app.component(Link.name as string, Link);
+SoLink.install = (app: App) => {
+  app.component(SoLink.name as string, SoLink);
 };
 
-export default Link;
+export { SoLink };

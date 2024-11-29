@@ -6,6 +6,7 @@ import vueJsx from '@vitejs/plugin-vue-jsx'
 import vueDevTools from 'vite-plugin-vue-devtools'
 import { visualizer } from 'rollup-plugin-visualizer';
 import VitePluginImport from 'vite-plugin-import' // 导入按需加载插件
+import vitePluginSword from './vite-plugin-sword';
 
 // https://vite.dev/config/
 export default defineConfig({
@@ -14,13 +15,16 @@ export default defineConfig({
     vueJsx(),
     vueDevTools(),
     visualizer({
-      open: false, // 构建完成后自动打开分析报告
+      open: true, // 构建完成后自动打开分析报告
     }),
     VitePluginImport({
-      libraryName: 'sword',  // 组件库名
+      libraryName: 'Sword',  // 组件库名
       libraryDirectory: 'es',       // 组件库目录（确保你的组件是按目录结构导出的）
       style: true,                  // 是否自动引入样式
     }),
+    // vitePluginSword({
+    //   componentsDir: './dist',  // 指定组件的路径
+    // })
   ],
   build: {
     rollupOptions: {
