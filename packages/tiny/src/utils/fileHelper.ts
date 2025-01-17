@@ -1,5 +1,5 @@
 import * as jetpack from 'fs-jetpack'
-import { FileHelperLog } from '@logger/category'
+import { FileHelperLog } from './logger/category'
 
 
 /**

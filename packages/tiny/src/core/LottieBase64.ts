@@ -6,47 +6,50 @@ import tinify from 'tinify'
 
 interface IOptions {
   /** 需要压缩文件 */
-  input: Record<string, string>
+  input: string;
   /** 压缩后文件 */
   output: {
     dir: string
   }
   /** 配置信息 */
   config: {
-    /** 是否开启熊猫压缩 */
-    isTinyPng: boolean
     key?: string
-    /** 图片地址名 */
-    images: string
-    /** 熊猫压缩后目录 */
-    tinypng: string
   }
 }
 interface IFileInfo {
   name: string
-  dir: string
+  fileName: string
 }
 
 /**
- * 用于压缩 Lottie (内置) ，并转化成外挂
+ * 压缩 Lottie 中的 Base64
  */
-export class TinyLottieInner {
+export class TinyLottieBase64 {
   public options: IOptions
   constructor(options: IOptions) {
     this.options = options
     dotenv.config({ path: '.env' })
-    this.execute()
   }
-  async execute(): Promise<void> {
+  async execute(): Promise<boolean> {
     const { input } = this.options
-    for (const [name, dir] of Object.entries(input)) {
-      await this.writeFile({ name, dir })
+    const list = fileHelper.getFileList(input)
+    try {
+      for (let i = 0; i < list.length; i++) {
+        const fileName = list[i];
+        if (fileName.endsWith('.json')) {
+          await this.writeFile({ name: fileName, fileName: path.resolve(input, fileName) })
+        }
+      }
+    } catch (error) {
+      TinyLottieLog.error(`Error: Failed to get lottie JSON for file `, error)
+      return false;
     }
+    return true;
   }
   // 写入转换后的文件
   async writeFile(fileInfo: IFileInfo): Promise<void> {
-    const { name } = fileInfo
-    const data = await this.replaceLottie(fileInfo)
+    const { name, fileName } = fileInfo
+    const data = await this.replaceLottie(fileName)
     if (!data) {
       TinyLottieLog.error(`Error: Failed to get lottie JSON for file '${name}'.`)
       return
@@ -54,45 +57,33 @@ export class TinyLottieInner {
     const jsonString = JSON.stringify(data)
     const outputDir = this.options?.output?.dir || ''
     fileHelper.createDirectory(outputDir)
-    const outputFile = path.resolve(outputDir, `${name}.json`)
+    const outputFile = path.resolve(outputDir, `${name}`)
     fileHelper.writeFile(outputFile, jsonString)
-    TinyLottieLog.log(`File '${outputFile}' written successfully.`)
   }
   // 替换 lottie 文件中的图片数据为 base64
-  async replaceLottie(fileInfo: IFileInfo): Promise<any> {
-    const data = await this.getLottieJson(fileInfo)
+  async replaceLottie(path: string): Promise<any> {
+    const data = await this.getLottieJson(path)
     if (!data) {
       return null
     }
-    return await this.getBase64(fileInfo, data)
+    return await this.getBase64(data)
   }
   // 压缩 base64
-  async getBase64(fileInfo: IFileInfo, data: any) {
-    const { dir } = fileInfo
-    const { isTinyPng, images, tinypng, key = '' } = this.options.config
+  async getBase64(data: any) {
+    const { key = '' } = this.options.config
     const tinyPngKey = process.env.TINYPNG_API_KEY || key;
+    if (!tinyPngKey) {
+      return null;
+    }
     const promises = data.assets.map(async (item: any) => {
       if (item.p && item.p.includes('base64')) {
         const imagestring = item.p
         const base64str = imagestring.slice(imagestring.indexOf('base64,') + 7)
         const extname = imagestring.slice(imagestring.indexOf('data:image/') + 11, imagestring.indexOf(';base64'))
-        const fileName = `${item.id}.${extname}`;
         const imageData: any = Buffer.from(base64str, 'base64')
-        if (!tinyPngKey || !isTinyPng) {
-          TinyLottieLog.info(`没有 tinyPngKey 或 isTinyPng 开关关闭 不压缩图片, 把图片外挂出去 ${fileName}`) 
-          const outputFile = path.resolve(dir, images, fileName)
-          fileHelper.writeFile(outputFile, imageData)
-          item.u = `${images}/`
-          item.p = fileName
-          return
-        }
         tinify.key = tinyPngKey
         const source = tinify.fromBuffer(imageData)
         const buff: any = await source.toBuffer()
-        const outputFile = path.resolve(dir, tinypng, fileName)
-        fileHelper.writeFile(outputFile, buff)
-
-        TinyLottieLog.info(`有 tinyPngKey 压缩图片`, fileName)
         item.p = 'data:image/' + extname + ';base64,' + buff.toString('base64')
       }
     })
@@ -103,21 +94,16 @@ export class TinyLottieInner {
   }
 
   // 获取 lottie 文件的 JSON 数据
-  async getLottieJson(fileInfo : IFileInfo) {
-    const { dir } = fileInfo
-    const jsonFilePath = fileHelper.findFirstJsonFile(dir)
-    if (!jsonFilePath) {
-      return
-    }
-    const data = fileHelper.readFile(jsonFilePath)
+  async getLottieJson(fileName: string) {
+    const data = fileHelper.readFile(fileName)
     if (!data) {
-      TinyLottieLog.error(`Error: Failed to read lottie JSON file '${jsonFilePath}'.`)
+      TinyLottieLog.error(`Error: Failed to read lottie JSON file '${fileName}'.`)
       return null
     }
     try {
       return JSON.parse(data.toString())
     } catch (error) {
-      TinyLottieLog.error(`Error: Invalid JSON format in file '${jsonFilePath}'.`)
+      TinyLottieLog.error(`Error: Invalid JSON format in file '${fileName}'.`)
       return null
     }
   }

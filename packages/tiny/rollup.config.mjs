@@ -16,7 +16,8 @@ const config = {
   external: ['tinify'], // 告诉 Rollup 忽略对 imagemin 库的检查
   input: resolve('src/index.ts'),
   output: [
-    { file: resolve('dist/index.js'), format: 'cjs' },
+    { file: resolve('dist/bundle.cjs.js'), format: 'cjs' },
+    { file: resolve('dist/bundle.esm.js'), format: 'esm' },
   ],
   plugins: [
     json(),
