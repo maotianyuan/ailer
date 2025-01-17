@@ -1,6 +1,6 @@
 {
   "name": "@ailer/sword",
-  "version": "0.0.1",
+  "version": "0.0.13",
   "private": true,
   "type": "module",
   "types": "dist/types/index.d.ts",
